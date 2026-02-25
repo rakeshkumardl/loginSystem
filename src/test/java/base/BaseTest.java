@@ -13,9 +13,9 @@ import utils.ConfigReader;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
-
 import org.apache.commons.io.FileUtils;
 
+//@Listeners({AllureTestNg.class})
 public class BaseTest {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
