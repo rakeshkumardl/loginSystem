@@ -3,8 +3,6 @@ name: Selenium CI Pipeline
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -19,7 +17,13 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: maven
+
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: maven-
 
       - name: Install Chrome
         run: |
@@ -29,20 +33,13 @@ jobs:
       - name: Run Tests (Headless)
         run: mvn clean test -Dheadless=true
 
-      # Install Allure CLI
-      - name: Install Allure
-        run: |
-          wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz
-          tar -zxvf allure-2.25.0.tgz
-          sudo mv allure-2.25.0 /opt/allure
-          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
-
       - name: Generate Allure Report
         run: |
+          npm install -g allure-commandline --save-dev
           allure generate target/allure-results --clean -o allure-report
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: allure-report
-          path: allure-report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
