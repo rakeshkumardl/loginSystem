@@ -29,8 +29,9 @@ public class BaseTest {
     public void setup() {
 
         String browser = ConfigReader.get("browser");
-        boolean headless =
-                Boolean.parseBoolean(ConfigReader.get("headless"));
+        boolean headless = Boolean.parseBoolean(
+                System.getProperty("headless",
+                        ConfigReader.get("headless")));
 
         if (browser.equalsIgnoreCase("chrome")) {
 
