@@ -16,8 +16,9 @@ public class AmazonLogin {
     }
 
     // Locators
-    private By searchBox = By.name("q");
-    private By acceptButton = By.xpath("//button[contains(.,'Accept')]");
+    private By searchBox = By.id("twotabsearchtextbox");
+    private By searchButton = By.id("nav-search-submit-button");
+    private By acceptButton = By.id("sp-cc-accept");
 
     // Actions
     public void openAmazon() {
@@ -34,7 +35,9 @@ public class AmazonLogin {
         WebElement box = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(searchBox));
         box.sendKeys(keyword);
-        box.submit();
+        WebElement button = wait.until(
+                ExpectedConditions.elementToBeClickable(searchButton));
+        button.click();
     }
 
     public boolean isTitleContains(String text) {
