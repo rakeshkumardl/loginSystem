@@ -15,7 +15,7 @@ public class GoogleSearchTest extends BaseTest {
         google.acceptCookiesIfPresent();
         google.search("AI testing tool");
 
-        Assert.assertTrue(google.isTitleContains("AI testing tool"));
+        Assert.assertTrue(google.isUrlContains("AI+testing+tool"));
 
     }
 }

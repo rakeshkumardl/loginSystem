@@ -41,4 +41,8 @@ public class GoogleHomePage {
         wait.until(ExpectedConditions.titleContains(text));
         return driver.getTitle().contains(text);
     }
+
+    public boolean isUrlContains(String text) {
+        return driver.getCurrentUrl().contains(text);
+    }
 }
