@@ -13,8 +13,9 @@ public class GoogleSearchTest extends BaseTest {
         GoogleHomePage google = new GoogleHomePage(getDriver());
 
         google.acceptCookiesIfPresent();
-        google.search("Selenium WebDriver");
+        google.search("AI testing tool");
 
-        Assert.assertTrue(google.isTitleContains("Selenium"));
+        Assert.assertTrue(google.isTitleContains("AI testing tool"));
+
     }
 }
