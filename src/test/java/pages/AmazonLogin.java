@@ -20,9 +20,9 @@ public class AmazonLogin {
     private By acceptButton = By.xpath("//button[contains(.,'Accept')]");
 
     // Actions
-//    public void openGoogle() {
-//        driver.get("https://www.google.com");
-//    }
+    public void openAmazon() {
+        driver.get("https://www.amazon.com");
+    }
 
     public void acceptCookiesIfPresent() {
         try {
@@ -40,5 +40,9 @@ public class AmazonLogin {
     public boolean isTitleContains(String text) {
         wait.until(ExpectedConditions.titleContains(text));
         return driver.getTitle().contains(text);
+    }
+
+    public boolean isUrlContains(String text) {
+        return driver.getCurrentUrl().contains(text);
     }
 }

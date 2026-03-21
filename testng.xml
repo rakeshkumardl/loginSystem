@@ -8,6 +8,7 @@
     <test name="Tests">
         <classes>
             <class name="tests.GoogleSearchTest"/>
+            <class name="tests.AmazonSearchTest"/>
         </classes>
     </test>
 
