@@ -16,13 +16,13 @@ public class AmazonLogin {
     }
 
     // Locators
-    private By searchBox = By.name("field-keywords");
+    private By searchBox = By.id("twotabsearchtextbox");
     private By searchButton = By.id("nav-search-submit-button");
     private By acceptButton = By.id("sp-cc-accept");
 
     // Actions
     public void openAmazon() {
-        driver.get("https://www.amazon.com");
+        driver.get("https://www.amazon.in");
     }
 
     public void acceptCookiesIfPresent() {
