@@ -43,6 +43,11 @@ public class GoogleHomePage {
     }
 
     public boolean isUrlContains(String text) {
-        return driver.getCurrentUrl().contains(text);
+        return driver.getCurrentUrl().toLowerCase().contains(text.toLowerCase());
+    }
+
+    public boolean isSearchQueryInUrl(String keyword) {
+        String normalized = keyword.toLowerCase().trim().replace(" ", "+");
+        return driver.getCurrentUrl().toLowerCase().contains(normalized);
     }
 }

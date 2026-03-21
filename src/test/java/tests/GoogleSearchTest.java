@@ -13,9 +13,10 @@ public class GoogleSearchTest extends BaseTest {
         GoogleHomePage google = new GoogleHomePage(getDriver());
 
         google.acceptCookiesIfPresent();
-        google.search("AI testing tool");
+        String query = "AI testing tool";
+        google.search(query);
 
-        Assert.assertTrue(google.isUrlContains("AI+testing+tool"));
+        Assert.assertTrue(google.isSearchQueryInUrl(query), "Expected search query in URL (normalized), got=" + getDriver().getCurrentUrl());
 
     }
 }
