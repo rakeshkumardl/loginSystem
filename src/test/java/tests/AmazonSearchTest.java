@@ -13,7 +13,6 @@ public class AmazonSearchTest extends BaseTest {
         AmazonLogin amazon = new AmazonLogin(getDriver());
 
         amazon.openAmazon();
-        amazon.acceptCookiesIfPresent();
         amazon.search("laptop");
 
         Assert.assertTrue(amazon.isUrlContains("k=laptop"));

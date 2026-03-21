@@ -16,7 +16,7 @@ public class AmazonLogin {
     }
 
     // Locators
-    private By searchBox = By.id("twotabsearchtextbox");
+    private By searchBox = By.name("field-keywords");
     private By searchButton = By.id("nav-search-submit-button");
     private By acceptButton = By.id("sp-cc-accept");
 
